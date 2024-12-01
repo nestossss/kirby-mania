@@ -1,18 +1,34 @@
 package com.kirby.kirbymania.controller;
 
-import com.kirby.kirbymania.repositories.ClientRepository;
-import com.kirby.kirbymania.model.Client;
+import com.kirby.kirbymania.model.Order;
+import com.kirby.kirbymania.model.Product;
+import com.kirby.kirbymania.repositories.OrderItemRepository;
+import com.kirby.kirbymania.repositories.OrderRepository;
+import com.kirby.kirbymania.repositories.ProductRepository;
+import com.kirby.kirbymania.repositories.UserRepository;
+import com.kirby.kirbymania.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/")
 public class ClientController {
 
     @Autowired
-    private ClientRepository clientRepository;
+    private UserRepository userRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
+    private OrderItemRepository orderItemRepository;
+
+    @Autowired
+    private OrderRepository orderRepository;
 
     @GetMapping("/")
     public String home(){
@@ -21,8 +37,17 @@ public class ClientController {
 
     @GetMapping("/clients")
     public String showAllClients(Model model){
-        Iterable<Client> clients = clientRepository.findAll();
+        Iterable<User> clients = userRepository.findAll();
         model.addAttribute("clients", clients);
         return "clients";
     }
+
+    @GetMapping("/clients/:id")
+    public String showProfilePage(@PathVariable Integer id, Model model){
+        Optional<User> user = userRepository.findById(id);
+
+        return "profile";
+    }
+
+
 }
