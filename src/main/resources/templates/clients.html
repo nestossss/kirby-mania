@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>KirbyShop - Clients List</title>
+    <link href="../static/css/clients.css" th:href="@{/clients.css}" rel="stylesheet" />
+</head>
+<body>
+    <div th:each="cl : ${clients}">
+        <div>
+            <p th:class="name-text" th:text="${cl.name}">Nome</p>
+            <p th:class="email-text" th:text="${cl.email}">Nome</p>
+        </div>
+    </div>
+</body>
+</html>
