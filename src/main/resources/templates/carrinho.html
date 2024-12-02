@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Kirby Shop</title>
+    <link rel="stylesheet" href="carrinho.css">
+</head>
+<body>
+    <header class="header">
+        <img src="../image/pngwing.com__1_-removebg-preview.png" alt="Kirby Shop Logo" class="logo">
+    </header>
+
+    <div class="container">
+        <div class="message-box">
+            <h2>Seu carrinho</h2>
+            <p>Cheque seus itens antes da compra!</p>
+        </div>
+
+        <div class="cart-grid">
+            <!-- Sample Cart Item -->
+            <div class="cart-item">
+                <img src="/placeholder.svg?height=100&width=100" alt="Product Image" class="cart-image">
+                <div class="cart-details">
+                    <h3 class="cart-title">Kirby Plush</h3>
+                    <p class="cart-price">R$24.99</p>
+                    <div class="cart-quantity">
+                        <label for="quantity">Qty:</label>
+                        <input type="number" id="quantity" name="quantity" value="1" min="1">
+                    </div>
+                </div>
+                <button class="remove-button">Remover</button>
+            </div>
+
+            <!-- Repeat for more items -->
+        </div>
+
+        <div class="cart-summary">
+            <p>Total: <span class="total-price">R$24.99</span></p>
+            <button class="checkout-button">Comprar</button>
+        </div>
+    </div>
+</body>
+</html>
