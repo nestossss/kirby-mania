@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Criar Produtos</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header class="header">
+        <img src="../image/pngwing.com__1_-removebg-preview.png" alt="Kirby Shop Logo" class="logo">
+        <h1>Administração - Adicionar Produtos</h1>
+    </header>
+
+    <div class="container">
+        <div class="message-box">
+            <h2>Adicionar Produtos</h2>
+            <p>Insira as informações para criar um novo produto na loja.</p>
+        </div>
+
+        <div class="add-product-form">
+            <label for="productName">Nome do Produto:</label>
+            <input type="text" id="productName" placeholder="Ex.: Kirby Plush" class="form-input">
+
+            <label for="productPrice">Preço (R$):</label>
+            <input type="number" id="productPrice" placeholder="Ex.: 49.99" class="form-input">
+
+            <label for="productCategory">Categoria do Produto:</label>
+            <select id="productCategory" class="form-input">
+                <option value="camisas">camisas</option>
+                <option value="canecas">canecas</option>
+                <option value="bolsas">bolsas</option>
+                <option value="pingentes">pingentes</option>
+                <option value="figures">figures</option>
+            </select>
+
+            <button id="addProductButton" class="form-button">Adicionar Produto</button>
+        </div>
+
+        <!-- Lista de produtos criados -->
+        <div class="product-list">
+            <h3>Produtos Criados</h3>
+            <div id="productsContainer"></div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
