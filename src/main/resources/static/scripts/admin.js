@@ -4,10 +4,12 @@ const productNameInput = document.getElementById("productName");
 const productPriceInput = document.getElementById("productPrice");
 const productCategorySelect = document.getElementById("productCategory");
 const productsContainer = document.getElementById("productsContainer");
+const productForm = document.getElementById("add-product-form");
 
 // Adicionar evento de clique no botão "Adicionar Produto"
 addProductButton.addEventListener("click", () => {
     // Obter os valores dos inputs
+
     const productName = productNameInput.value.trim();
     const productPrice = productPriceInput.value.trim();
     const productCategory = productCategorySelect.value;
@@ -37,6 +39,9 @@ addProductButton.addEventListener("click", () => {
 
     // Adicionar o card à lista de produtos
     productsContainer.appendChild(productCard);
+
+    // Envia formulario
+    productForm.submit();
 
     // Limpar os campos do formulário
     productNameInput.value = "";

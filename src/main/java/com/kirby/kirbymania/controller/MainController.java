@@ -25,6 +25,11 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/admin")
+    public String adminPage(){
+        return "admin";
+    }
+
     @GetMapping("/categories")
     public String categoriesPage(){
         return "caminhos";
@@ -32,11 +37,11 @@ public class MainController {
 
     @GetMapping("/categories/{category}")
     public String specificCategoriePage(@PathVariable String category, Model model){
-
+        System.out.println(category.toUpperCase().trim());
         CategoriaProduto prodCategoria = CategoriaProduto.valueOf( (category.toUpperCase()) );
         List<Product> produtos = productRepository.findByCategoria(prodCategoria);
         model.addAttribute("listaProdutos", produtos);
-        model.addAttribute("categoria", category);
+        model.addAttribute("categoria", prodCategoria);
         return "loja";
     }
 

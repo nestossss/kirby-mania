@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "`order`")
 public class Order {
 
     @Id
@@ -12,9 +13,10 @@ public class Order {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
-    private User client;
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany
+    @JoinColumn(name = "order_id")
     private List<OrderItem> productList;
 }

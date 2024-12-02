@@ -1,49 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Criar Produtos</title>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="../static/css/admin.css" th:href="@{/css/admin.css}">
 </head>
 <body>
-    <header class="header">
-        <img src="../image/pngwing.com__1_-removebg-preview.png" alt="Kirby Shop Logo" class="logo">
-        <h1>Administração - Adicionar Produtos</h1>
-    </header>
+<header class="header">
+    <img src="../static/assets/pngwing.com__1_-removebg-preview.png" th:src="@{/assets/pngwing.com__1_-removebg-preview.png}" alt="Kirby Shop Logo" class="logo">
+    <h1>Administração - Adicionar Produtos</h1>
+</header>
 
-    <div class="container">
-        <div class="message-box">
-            <h2>Adicionar Produtos</h2>
-            <p>Insira as informações para criar um novo produto na loja.</p>
-        </div>
-
-        <div class="add-product-form">
-            <label for="productName">Nome do Produto:</label>
-            <input type="text" id="productName" placeholder="Ex.: Kirby Plush" class="form-input">
-
-            <label for="productPrice">Preço (R$):</label>
-            <input type="number" id="productPrice" placeholder="Ex.: 49.99" class="form-input">
-
-            <label for="productCategory">Categoria do Produto:</label>
-            <select id="productCategory" class="form-input">
-                <option value="camisas">camisas</option>
-                <option value="canecas">canecas</option>
-                <option value="bolsas">bolsas</option>
-                <option value="pingentes">pingentes</option>
-                <option value="figures">figures</option>
-            </select>
-
-            <button id="addProductButton" class="form-button">Adicionar Produto</button>
-        </div>
-
-        <!-- Lista de produtos criados -->
-        <div class="product-list">
-            <h3>Produtos Criados</h3>
-            <div id="productsContainer"></div>
-        </div>
+<div class="container">
+    <div class="message-box">
+        <h2>Adicionar Produtos</h2>
+        <p>Insira as informações para criar um novo produto na loja.</p>
     </div>
 
-    <script src="admin.js"></script>
+    <!-- Formulário de Adição de Produtos -->
+    <form class="add-product-form" th:action="@{/products/add-product}" method="post">
+        <label for="productName">Nome do Produto:</label>
+        <input type="text" id="productName" name="productName" placeholder="Ex.: Kirby Plush" class="form-input" required>
+
+        <label for="productPrice">Preço (R$):</label>
+        <input type="number" step="0.01" id="productPrice" name="productPrice" placeholder="Ex.: 49.99" class="form-input" required min="0">
+
+        <label for="productCategory">Categoria do Produto:</label>
+        <select id="productCategory" name="productCategory" class="form-input" required>
+            <option value="CAMISAS">camisas</option>
+            <option value="CANECAS">canecas</option>
+            <option value="BOLSAS">bolsas</option>
+            <option value="PINGENTES">pingentes</option>
+            <option value="FIGURES">figures</option>
+        </select>
+
+        <button type="submit" id="addProductButton" class="form-button">Adicionar Produto</button>
+    </form>
+
+    <!-- Lista de Produtos Criados -->
+    <div class="product-list">
+        <h3>Produtos Criados</h3>
+        <div id="productsContainer">
+            <div class="product-item" th:each="product : ${products}">
+                <p><strong>Nome:</strong> <span th:text="${product.name}">Nome do Produto</span></p>
+                <p><strong>Preço:</strong> R$ <span th:text="${product.price}">49.99</span></p>
+                <p><strong>Categoria:</strong> <span th:text="${product.category}">Categoria</span></p>
+                <form th:action="@{/admin/delete-product}" method="post" class="delete-product-form">
+                    <input type="hidden" name="productId" th:value="${product.id}">
+                    <button type="submit" class="delete-button">Excluir</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../static/scripts/admin.js" th:src="@{/scripts/admin.js}"></script>
 </body>
 </html>

@@ -14,7 +14,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany
+    @JoinColumn(name = "user_id")
     private List<Order> orders;
 
     private String name;

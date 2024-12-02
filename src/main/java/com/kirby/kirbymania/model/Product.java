@@ -15,7 +15,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany
+    @JoinColumn(name = "product_id")
     private List<OrderItem> orderList;
 
     private String nome;

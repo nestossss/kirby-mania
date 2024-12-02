@@ -249,3 +249,17 @@ body::before {
 .checkout-button:hover {
     background: #ff1493;
 }
+.adm-leva{
+    background: #ff69b4;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+

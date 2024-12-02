@@ -13,33 +13,35 @@
 
 <div class="container">
     <div class="message-box">
-        <h2>Welcome to Kirby's Shop!</h2>
-        <p>Find your favorite Kirby merchandise here!</p>
+        <h2 th:text="'Bem vindo ao KirbyMania! - Categoria: '+ ${categoria.toString().toLowerCase()}">Bem vindo a loja do kirby </h2>
+        <p>Encontre os melhores produtos do seu personagem favorito!</p>
     </div>
-
-    <form class="add-product-form" th:action="@{/add-product}" method="post">
-        <input type="text" name="productName" placeholder="Product Name" class="form-input" required>
-        <input type="number" name="productPrice" placeholder="Price ($)" class="form-input" required min="0">
-        <button type="submit" class="form-button">Add Product</button>
-    </form>
 
     <div class="product-grid">
         <div class="product-card" th:each="product : ${listaProdutos}">
             <img th:src="@{/assets/kirbyimg.png}" alt="Product Image" class="product-image">
-            <h3 class="product-title" th:text="${product.name}">Kirby Plush</h3>
+            <h3 class="product-title" th:text="${product.nome}">Kirby Plush</h3>
             <p class="product-price" th:text="${product.price}">$24.99</p>
             <form th:action="@{/add-to-cart}" method="post">
                 <input type="hidden" name="productId" th:value="${product.id}">
                 <button type="submit" class="buy-button">Add to Cart</button>
             </form>
-            <form th:action="@{/delete-product}" method="post">
+            <form th:action="@{/products/delete-product}"  method="post">
                 <input type="hidden" name="productId" th:value="${product.id}">
+                <input type="hidden" name="productCategory" th:value="${product.categoria.toString()}">
                 <button type="submit" class="delete-button">Delete</button>
             </form>
         </div>
     </div>
+
+    <div class="cart-summary">
+        <a th:href="@{/cart}" class="checkout-button">Ir para o Carrinho</a>
+    </div>
+    <a th:href="@{/admin}" class="adm-leva"> Ir para Administração</a>
+
+</div>
 </div>
 
-<script src="loja.js"></script>
+<script src="../static/scripts/loja.js" th:src="@{/scripts/loja.js}"></script>
 </body>
 </html>
