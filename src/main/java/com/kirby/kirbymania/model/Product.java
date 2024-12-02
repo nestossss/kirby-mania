@@ -19,6 +19,7 @@ public class Product {
     private List<OrderItem> orderList;
 
     private String nome;
+    private Float price;
     private Integer estoque;
     private CategoriaProduto categoria;
 
@@ -64,5 +65,20 @@ public class Product {
         this.orderList = orderList;
     }
 
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    public CategoriaProduto getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaProduto categoria) {
+        this.categoria = categoria;
+    }
 }
 

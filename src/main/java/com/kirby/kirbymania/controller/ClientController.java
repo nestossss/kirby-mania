@@ -35,18 +35,22 @@ public class ClientController {
         return "auth";
     }
 
-    @GetMapping("/clients")
+    @GetMapping("/:id")
+    public String showProfilePage(@PathVariable Integer id, Model model){
+        Optional<User> user = userRepository.findById(id);
+        return "profile";
+    }
+
+    @GetMapping("/all")
     public String showAllClients(Model model){
         Iterable<User> clients = userRepository.findAll();
         model.addAttribute("clients", clients);
         return "clients";
     }
 
-    @GetMapping("/clients/:id")
-    public String showProfilePage(@PathVariable Integer id, Model model){
-        Optional<User> user = userRepository.findById(id);
-
-        return "profile";
+    @PostMapping("/add-to-cart")
+    public @ResponseBody String addToLastOrder(){
+        return "Adicionado ao carrinho";
     }
 
 

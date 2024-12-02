@@ -1,16 +1,24 @@
 package com.kirby.kirbymania.controller;
 
 
+import com.kirby.kirbymania.model.Product;
+import com.kirby.kirbymania.repositories.ProductRepository;
 import com.kirby.kirbymania.util.CategoriaProduto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/")
 public class MainController {
+
+    @Autowired
+    ProductRepository productRepository;
 
     @GetMapping("/")
     public String homePage(){
@@ -22,10 +30,14 @@ public class MainController {
         return "caminhos";
     }
 
-    @GetMapping("/categories/{categorie}")
-    public String specificCategoriePage(@PathVariable String categorie, Model model){
-        model.addAttribute("categoria", categorie);
-        return "categoria";
+    @GetMapping("/categories/{category}")
+    public String specificCategoriePage(@PathVariable String category, Model model){
+
+        CategoriaProduto prodCategoria = CategoriaProduto.valueOf( (category.toUpperCase()) );
+        List<Product> produtos = productRepository.findByCategoria(prodCategoria);
+        model.addAttribute("listaProdutos", produtos);
+        model.addAttribute("categoria", category);
+        return "loja";
     }
 
 }

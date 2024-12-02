@@ -17,7 +17,6 @@
         <p>Find your favorite Kirby merchandise here!</p>
     </div>
 
-    <!-- Form to Add Products -->
     <form class="add-product-form" th:action="@{/add-product}" method="post">
         <input type="text" name="productName" placeholder="Product Name" class="form-input" required>
         <input type="number" name="productPrice" placeholder="Price ($)" class="form-input" required min="0">
@@ -25,9 +24,8 @@
     </form>
 
     <div class="product-grid">
-        <!-- Dynamically Rendered Product Cards -->
-        <div class="product-card" th:each="product : ${products}">
-            <img th:src="${product.imageUrl}" alt="Product Image" class="product-image">
+        <div class="product-card" th:each="product : ${listaProdutos}">
+            <img th:src="@{/assets/kirbyimg.png}" alt="Product Image" class="product-image">
             <h3 class="product-title" th:text="${product.name}">Kirby Plush</h3>
             <p class="product-price" th:text="${product.price}">$24.99</p>
             <form th:action="@{/add-to-cart}" method="post">
