@@ -1,41 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kirby Shop</title>
-    <link rel="stylesheet" href="loja.css">
+    <link rel="stylesheet" href="../static/css/loja.css" th:href="@{/css/loja.css}">
 </head>
 <body>
-    <header class="header">
-        <img src="../image/pngwing.com__1_-removebg-preview.png" alt="Kirby Shop Logo" class="logo">
-    </header>
+<header class="header">
+    <img src="../static/assets/pngwing.com__1_-removebg-preview.png" th:src="@{/assets/pngwing.com__1_-removebg-preview.png}" alt="Kirby Shop Logo" class="logo">
+</header>
 
-    <div class="container">
-        <div class="message-box">
-            <h2>Bem-vindo a loja do Kirby!</h2>
-            <p>Os melhores produtos do kirby só aqui!</p>
-        </div>
-
-        <!-- Form to Add Products -->
-        <div class="add-product-form">
-            <input type="text" id="productName" placeholder="Nome Do Produto" class="form-input">
-            <input type="number" id="productPrice" placeholder="Preço (R$)" class="form-input">
-            <button id="addProductButton" class="form-button">Adicionar</button>
-        </div>
-
-        <div class="product-grid">
-            <!-- Existing Product Cards -->
-            <div class="product-card">
-                <img src="/placeholder.svg?height=200&width=200" alt="Kirby Plush" class="product-image">
-                <h3 class="product-title">Kirby Plush</h3>
-                <p class="product-price">$24.99</p>
-                <button class="buy-button">adicionar ao carrinho</button>
-                <button class="delete-button">Delete</button>
-            </div>
-        </div>
+<div class="container">
+    <div class="message-box">
+        <h2>Welcome to Kirby's Shop!</h2>
+        <p>Find your favorite Kirby merchandise here!</p>
     </div>
 
-    <script src="loja.js"></script>
+    <!-- Form to Add Products -->
+    <form class="add-product-form" th:action="@{/add-product}" method="post">
+        <input type="text" name="productName" placeholder="Product Name" class="form-input" required>
+        <input type="number" name="productPrice" placeholder="Price ($)" class="form-input" required min="0">
+        <button type="submit" class="form-button">Add Product</button>
+    </form>
+
+    <div class="product-grid">
+        <!-- Dynamically Rendered Product Cards -->
+        <div class="product-card" th:each="product : ${products}">
+            <img th:src="${product.imageUrl}" alt="Product Image" class="product-image">
+            <h3 class="product-title" th:text="${product.name}">Kirby Plush</h3>
+            <p class="product-price" th:text="${product.price}">$24.99</p>
+            <form th:action="@{/add-to-cart}" method="post">
+                <input type="hidden" name="productId" th:value="${product.id}">
+                <button type="submit" class="buy-button">Add to Cart</button>
+            </form>
+            <form th:action="@{/delete-product}" method="post">
+                <input type="hidden" name="productId" th:value="${product.id}">
+                <button type="submit" class="delete-button">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="loja.js"></script>
 </body>
 </html>

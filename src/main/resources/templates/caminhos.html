@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="caminhos.css">
+    <link rel="stylesheet" href="../static/css/caminhos.css" th:href="@{/css/caminhos.css}">
     <title>Caminhos da loja</title>
 </head>
 <body>
@@ -11,22 +11,22 @@
         <h1>★ Caminhos da loja ★</h1>
     </header>
     <div class="container">
-        
+
         <div class="effects">
-            <div class="effect" id="effect1">Bolsas personalizadas com pinduricos</div>
-            <div class="effect" id="effect2">Canecas</div>
-            <div class="effect" id="effect3">Pingentes</div>
-            <div class="effect" id="effect4">Camisas</div>
-            <div class="effect" id="effect5">Figures</div>
+            <a href="/categories/bolsas" th:href="@{/categories/bolsas}" class="effect" id="effect1">Bolsas personalizadas com pinduricos</a>
+            <a href="/categories/canecas" th:href="@{/categories/canecas}" class="effect" id="effect2">Canecas</a>
+            <a href="/categories/pingentes" th:href="@{/categories/pingentes}" class="effect" id="effect3">Pingentes</a>
+            <a href="/categories/camisas" th:href="@{/categories/camisas}" class="effect" id="effect4">Camisas</a>
+            <a href="/categories/figures" th:href="@{/categories/figures}"  class="effect" id="effect5">Figures</a>
         </div>
 
         <div class="character">
-            <img src="../image/krbDOmedo.png" alt="Character">
+            <img th:src="@{/assets/krbDOmedo.png}" src="../static/assets/krbDOmedo.png" alt="Character">
             <div class="eye" id="leftEye">
-                <img src="../image/olhoskrb.png" alt="Left Eye">
+                <img th:src="@{/assets/olhoskrb.png}" src="../static/assets/olhoskrb.png" alt="Left Eye">
             </div>
             <div class="eye" id="rightEye">
-                <img src="../image/olhoskrb.png" alt="Right Eye">
+                <img th:src="@{/assets/olhoskrb.png}" src="../static/assets/olhoskrb.png" alt="Right Eye">
             </div>
         </div>
     </div>

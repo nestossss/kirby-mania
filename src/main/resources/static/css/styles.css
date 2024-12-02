@@ -192,7 +192,7 @@ body::before {
 
 .star {
   position: absolute;
-  background-image: url('../image/star.png'); /* Caminho da imagem da estrela */
+  background-image: url("../assets/estrela.png"); /* Caminho da imagem da estrela */
   background-size: cover; /* Faz com que a imagem se ajuste ao tamanho */
   animation: fallStars 1.2s linear forwards; /* Acelera a queda das estrelas */
   opacity: 1;  /* Garantir opacidade total */

@@ -1,7 +1,9 @@
 package com.kirby.kirbymania.util;
 
 public enum CategoriaProduto {
-    CATEGORIA1,
-    CATEGORIA2,
-    CATEGORIA3
+    CAMISAS,
+    CANECAS,
+    BOLSAS,
+    PINGENTES,
+    FIGURES
 }

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/clients")
 public class ClientController {
 
     @Autowired
@@ -32,7 +32,7 @@ public class ClientController {
 
     @GetMapping("/")
     public String home(){
-        return "hello";
+        return "auth";
     }
 
     @GetMapping("/clients")

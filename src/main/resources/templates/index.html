@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Background Animado com Repetição</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
   
 </head>
 <body>
@@ -13,11 +13,11 @@
 
   <div class="logo-kirby-ent">
     <div class="log-img-K">
-      <img src="../image/kirbyimg.png" alt="Logo do Kirby">
+      <img src="../static/assets/kirbyimg.png" th:src="@{/assets/kirbyimg.png}" alt="Logo do Kirby">
     </div>
   </div>
 
   <!-- Div animada no final da tela -->
   <div class="footer-animation"></div>
-</body><script src="estrelinha.js"></script>
+</body><script src="../static/scripts/estrelinha.js" th:src="@{/scripts/estrelinha.js}"></script>
 </html>
