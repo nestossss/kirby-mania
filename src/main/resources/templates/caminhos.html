@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="caminhos.css">
+    <title>Caminhos da loja</title>
+</head>
+<body>
+    <header class="striped-header">
+        <h1>★ Caminhos da loja ★</h1>
+    </header>
+    <div class="container">
+        
+        <div class="effects">
+            <div class="effect" id="effect1">Bolsas personalizadas com pinduricos</div>
+            <div class="effect" id="effect2">Canecas</div>
+            <div class="effect" id="effect3">Pingentes</div>
+            <div class="effect" id="effect4">Camisas</div>
+            <div class="effect" id="effect5">Figures</div>
+        </div>
+
+        <div class="character">
+            <img src="../image/krbDOmedo.png" alt="Character">
+            <div class="eye" id="leftEye">
+                <img src="../image/olhoskrb.png" alt="Left Eye">
+            </div>
+            <div class="eye" id="rightEye">
+                <img src="../image/olhoskrb.png" alt="Right Eye">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const character = document.querySelector('.character');
+        const leftEye = document.querySelector('#leftEye img');
+        const rightEye = document.querySelector('#rightEye img');
+
+        document.addEventListener('mousemove', (e) => {
+            const rect = character.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            
+            const maxMove = 5;
+
+            leftEye.style.transform = `translate(${(x - 0.5) * maxMove * 2}px, ${(y - 0.5) * maxMove * 2}px)`;
+            rightEye.style.transform = `translate(${(x - 0.5) * maxMove * 2}px, ${(y - 0.5) * maxMove * 2}px)`;
+        });
+
+        document.querySelectorAll('.effect').forEach(effect => {
+            effect.addEventListener('mouseover', () => {
+                effect.style.transform = 'scale(1.1)';
+            });
+            
+            effect.addEventListener('mouseout', () => {
+                effect.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

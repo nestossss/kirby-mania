@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirby Shop</title>
+    <link rel="stylesheet" href="loja.css">
+</head>
+<body>
+    <header class="header">
+        <img src="../image/krbDOmedo.png" alt="Kirby Shop Logo" class="logo">
+    </header>
+
+    <div class="container">
+        <div class="message-box">
+            <h2>Welcome to Kirby's Shop!</h2>
+            <p>Find your favorite Kirby merchandise here!</p>
+        </div>
+
+        <!-- Form to Add Products -->
+        <div class="add-product-form">
+            <input type="text" id="productName" placeholder="Product Name" class="form-input">
+            <input type="number" id="productPrice" placeholder="Price ($)" class="form-input">
+            <button id="addProductButton" class="form-button">Add Product</button>
+        </div>
+
+        <div class="product-grid">
+            <!-- Existing Product Cards -->
+            <div class="product-card">
+                <img src="/placeholder.svg?height=200&width=200" alt="Kirby Plush" class="product-image">
+                <h3 class="product-title">Kirby Plush</h3>
+                <p class="product-price">$24.99</p>
+                <button class="buy-button">Add to Cart</button>
+                <button class="delete-button">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="loja.js"></script>
+</body>
+</html>
