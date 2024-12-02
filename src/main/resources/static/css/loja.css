@@ -45,7 +45,7 @@ body::before {
 
 .header {
     background-color: #ff69b4;
-    padding: 20px;
+
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -230,4 +230,23 @@ body::before {
         width: 150px;
         height: 150px;
     }
+}
+
+
+.checkout-button {
+    background: #ff69b4;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.checkout-button:hover {
+    background: #ff1493;
 }
